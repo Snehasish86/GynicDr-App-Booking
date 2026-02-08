@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Indrojit - AI Appointment Booking</title>
+
+<style>
+    :root {
+        --primary-color: #2C3E50;
+        --secondary-color: #3498DB;
+        --accent-color: #1ABC9C;
+        --success-color: #27AE60;
+        --danger-color: #E74C3C;
+        --warning-color: #F39C12;
+        --light-bg: #ECF0F1;
+        --card-bg: #FFFFFF;
+        --text-dark: #2C3E50;
+        --text-light: #7F8C8D;
+        --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        --medical-blue: #4A90E2;
+        --medical-green: #50C878;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(44, 62, 80, 0.95);
+        color: white;
+        padding: 15px 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-logo {
+        font-size: 24px;
+        font-weight: bold;
+        text-decoration: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-logo:hover {
+        color: var(--secondary-color);
+    }
+
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .nav-menu a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 5px 0;
+    }
+
+    .nav-menu a:hover {
+        color: var(--secondary-color);
+    }
+
+    .nav-menu a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--secondary-color);
+        transition: width 0.3s ease;
+    }
+
+    .nav-menu a:hover::after {
+        width: 100%;
+    }
+
+    .nav-btn {
+        background: var(--secondary-color);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .nav-btn:hover {
+        background: #2980B9;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+    }
+
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+    }
+
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background: white;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(10px, 10px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* Navigation Bar */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(44, 62, 80, 0.95);
+        color: white;
+        padding: 15px 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-logo {
+        font-size: 24px;
+        font-weight: bold;
+        text-decoration: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-logo:hover {
+        color: var(--secondary-color);
+    }
+
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .nav-menu a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 5px 0;
+    }
+
+    .nav-menu a:hover {
+        color: var(--secondary-color);
+    }
+
+    .nav-menu a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--secondary-color);
+        transition: width 0.3s ease;
+    }
+
+    .nav-menu a:hover::after {
+        width: 100%;
+    }
+
+    .nav-btn {
+        background: var(--secondary-color);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .nav-btn:hover {
+        background: #2980B9;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+    }
+
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+    }
+
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background: white;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(10px, 10px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: var(--gradient-1);
+        min-height: 100vh;
+        padding: 20px;
+        padding-top: 90px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        background: var(--card-bg);
+        padding: 40px;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 600px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        animation: slideIn 0.5s ease-out;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid var(--light-bg);
+    }
+
+    .header h1 {
+        color: var(--primary-color);
+        font-size: 28px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .ai-badge {
+        background: var(--gradient-2);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        color: var(--text-dark);
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid var(--light-bg);
+        border-radius: 10px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        font-family: inherit;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        outline: none;
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+
+    .time-slots {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .time-slot {
+        padding: 10px;
+        border: 2px solid var(--light-bg);
+        border-radius: 8px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: white;
+        font-size: 13px;
+    }
+
+    .time-slot:hover {
+        border-color: var(--secondary-color);
+        background: rgba(52, 152, 219, 0.1);
+    }
+
+    .time-slot.selected {
+        background: var(--secondary-color);
+        color: white;
+        border-color: var(--secondary-color);
+    }
+
+    .time-slot.unavailable {
+        opacity: 0.4;
+        cursor: not-allowed;
+        background: #f5f5f5;
+    }
+
+    .ai-suggestions {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    .ai-suggestions h3 {
+        font-size: 14px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .suggestion-item {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 8px 12px;
+        border-radius: 6px;
+        margin-top: 8px;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .suggestion-item:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateX(5px);
+    }
+
+    .btn {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .btn-primary {
+        background: var(--success-color);
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background: #229954;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(39, 174, 96, 0.4);
+    }
+
+    .btn-secondary {
+        background: var(--secondary-color);
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background: #2980B9;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(52, 152, 219, 0.4);
+    }
+
+    .info-card {
+        background: rgba(52, 152, 219, 0.1);
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        border-left: 4px solid var(--secondary-color);
+    }
+
+    .info-card p {
+        color: var(--text-dark);
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+        .container {
+            padding: 25px;
+        }
+        
+        .time-slots {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .header h1 {
+            font-size: 22px;
+        }
+    }
+
+    /* Custom Modal Styles */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        padding: 30px;
+        max-width: 500px;
+        width: 90%;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -40%);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid var(--light-bg);
+    }
+
+    .modal-header h2 {
+        color: var(--primary-color);
+        font-size: 22px;
+        margin: 0;
+    }
+
+    .close-modal {
+        background: var(--danger-color);
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .close-modal:hover {
+        background: #C0392B;
+        transform: rotate(90deg);
+    }
+
+    .modal-body {
+        color: var(--text-dark);
+        line-height: 1.8;
+    }
+
+    .modal-body h3 {
+        color: var(--secondary-color);
+        font-size: 18px;
+        margin: 20px 0 10px 0;
+    }
+
+    .modal-body ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .modal-body li {
+        padding: 8px 0;
+        padding-left: 25px;
+        position: relative;
+    }
+
+    .modal-body li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--success-color);
+        font-weight: bold;
+    }
+
+    .tip-section {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+        padding: 15px;
+        border-radius: 10px;
+        margin: 15px 0;
+        border-left: 4px solid var(--secondary-color);
+    }
+
+    .warning-note {
+        background: rgba(243, 156, 18, 0.1);
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+        border-left: 4px solid var(--warning-color);
+        font-size: 14px;
+    }
+
+    /* Footer */
+    .footer {
+        background: rgba(44, 62, 80, 0.85);
+        color: white;
+        text-align: center;
+        padding: 30px 20px;
+        margin-top: 50px;
+        backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+    }
+
+    .footer p {
+        margin-bottom: 15px;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .social-links a {
+        width: 45px;
+        height: 45px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-size: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+        background: white;
+        transform: translateY(-3px);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            flex-direction: column;
+            width: 100%;
+            background: rgba(44, 62, 80, 0.98);
+            text-align: center;
+            gap: 0;
+            padding: 20px 0;
+        }
+
+        .nav-menu.active {
+            display: flex;
+        }
+
+        .nav-menu a {
+            padding: 15px 20px;
+            width: 100%;
+        }
+
+        .hamburger {
+            display: flex;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="Index.html" class="nav-logo"><img src="img/logo.png" alt="Logo" style="height: 50px; padding: 5px 0;"></a>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="Index.html#about" class="nav-link">About</a></li>
+            <li><a href="Index.html#education" class="nav-link">Education</a></li>
+            <li><a href="Index.html#experience" class="nav-link">Experience</a></li>
+            <li><a href="Index.html#specializations" class="nav-link">Specializations</a></li>
+            <li><a href="Index.html#services" class="nav-link">Services</a></li>
+            <li><a href="appointment-booking.html" class="nav-link">Book Now</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="header">
+        <h1>
+            🏥 Dr. Indrojit Clinic
+        </h1>
+        <span class="ai-badge">Prime Helth Pint Powered Booking site</span>
+        <div style="margin-top: 15px;">
+            <a href="Index.html" style="color: var(--secondary-color); text-decoration: none; font-weight: 600; background: white; padding: 8px 20px; border-radius: 20px; display: inline-block; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                 View Dr. Indrojit's Portfolio
+            </a>
+        </div>
+    </div>
+
+    <div class="ai-suggestions" id="aiSuggestions">
+        <h3>💡 AI Smart Suggestions</h3>
+        <div class="suggestion-item" onclick="applySuggestion('routine-checkup')">
+            Regular Health Checkup - Recommended every 6 months
+        </div>
+    </div>
+
+    <div class="info-card">
+        <p>📅 Book your appointment with Dr. Indrojit. Our AI system will help you choose the best time slot and prepare for your visit.</p>
+    </div>
+
+    <form id="appointmentForm">
+        <div class="form-group">
+            <label for="name">👤 Full Name</label>
+            <input type="text" id="name" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="age">📊 Age</label>
+            <input type="number" id="age" placeholder="Your age" required min="1" max="120">
+        </div>
+
+        <div class="form-group">
+            <label for="sex">⚧ Gender</label>
+            <select id="sex" required>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">📱 Phone Number</label>
+            <input type="tel" id="phone" placeholder="Your contact number" required>
+        </div>
+
+        <div class="form-group">
+            <label for="date">📅 Appointment Date</label>
+            <input type="date" id="date" required>
+        </div>
+
+        <div class="form-group">
+            <label>⏰ Preferred Time Slot</label>
+            <div class="time-slots">
+                <div class="time-slot" data-time="09:00 AM" onclick="selectTimeSlot(this)">09:00 AM</div>
+                <div class="time-slot" data-time="10:00 AM" onclick="selectTimeSlot(this)">10:00 AM</div>
+                <div class="time-slot" data-time="11:00 AM" onclick="selectTimeSlot(this)">11:00 AM</div>
+                <div class="time-slot" data-time="02:00 PM" onclick="selectTimeSlot(this)">02:00 PM</div>
+                <div class="time-slot" data-time="03:00 PM" onclick="selectTimeSlot(this)">03:00 PM</div>
+                <div class="time-slot" data-time="04:00 PM" onclick="selectTimeSlot(this)">04:00 PM</div>
+                <div class="time-slot" data-time="05:00 PM" onclick="selectTimeSlot(this)">05:00 PM</div>
+                <div class="time-slot" data-time="06:00 PM" onclick="selectTimeSlot(this)">06:00 PM</div>
+                <div class="time-slot" data-time="07:00 PM" onclick="selectTimeSlot(this)">07:00 PM</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="reason">🩺 Reason for Visit</label>
+            <select id="reason" required onchange="updateAISuggestions()">
+                <option value="">Select reason</option>
+                <option value="General Checkup">General Checkup</option>
+                <option value="Follow-up">Follow-up Appointment</option>
+                <option value="Consultation">New Consultation</option>
+                <option value="Emergency">Emergency</option>
+                <option value="Lab Results">Lab Results Discussion</option>
+                <option value="Vaccination">Vaccination</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="symptoms">📝 Additional Notes / Symptoms</label>
+            <textarea id="symptoms" placeholder="Describe your symptoms or any special requirements..."></textarea>
+        </div>
+
+        <button type="button" class="btn btn-primary" onclick="sendWhatsApp()">
+            📲 Book Appointment via WhatsApp
+        </button>
+        
+        <button type="button" class="btn btn-secondary" onclick="showAIAnalysis()">
+            🤖 Get AI Health Tips
+        </button>
+    </form>
+</div>
+
+<!-- Custom Modal -->
+<div class="modal-overlay" id="aiModal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <h2>🤖 AI Health Analysis</h2>
+            <button class="close-modal" onclick="closeModal()">×</button>
+        </div>
+        <div class="modal-body" id="modalBody">
+            <!-- Content will be inserted here -->
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+let selectedTime = "";
+
+// Set minimum date to today
+document.getElementById('date').min = new Date().toISOString().split('T')[0];
+
+function selectTimeSlot(element) {
+    if (element.classList.contains('unavailable')) return;
+    
+    // Remove selection from all slots
+    document.querySelectorAll('.time-slot').forEach(slot => {
+        slot.classList.remove('selected');
+    });
+    
+    // Select clicked slot
+    element.classList.add('selected');
+    selectedTime = element.getAttribute('data-time');
+}
+
+function updateAISuggestions() {
+    const reason = document.getElementById('reason').value;
+    const aiSuggestions = document.getElementById('aiSuggestions');
+    
+    let suggestions = {
+        'General Checkup': '💚 Great choice! Regular checkups help prevent health issues. Please fast for 8 hours before your appointment for accurate test results.',
+        'Follow-up': '🔄 Follow-up appointments are important for tracking your progress. Bring your previous medical reports.',
+        'Consultation': '👨‍⚕️ New consultation booked! Please bring any relevant medical history, current medications, and insurance details.',
+        'Emergency': '🚨 Emergency detected! We recommend calling the clinic immediately for urgent cases. Click to call: <a href="tel:+917602711924" style="color:white;text-decoration:underline;">+91 95933 62928</a>',
+        'Lab Results': '📊 Lab results discussion. Please bring your test reports and any questions you have.',
+        'Vaccination': '💉 Vaccination appointment. Please inform if you have any allergies or are currently taking medications.',
+        'Other': '📋 Please describe your requirements in the notes section for better assistance.'
+    };
+    
+    if (reason && suggestions[reason]) {
+        aiSuggestions.innerHTML = `
+            <h3>💡 AI Smart Suggestions</h3>
+            <div class="suggestion-item">${suggestions[reason]}</div>
+        `;
+    }
+}
+
+function applySuggestion(type) {
+    if (type === 'routine-checkup') {
+        document.getElementById('reason').value = 'General Checkup';
+        updateAISuggestions();
+    }
+}
+
+function showAIAnalysis() {
+    const age = document.getElementById('age').value;
+    const sex = document.getElementById('sex').value;
+    const reason = document.getElementById('reason').value;
+    
+    if (!age || !sex) {
+        alert('⚠️ Please fill in your age and gender to get personalized AI health tips.');
+        return;
+    }
+    
+    let tips = '';
+    
+    // Age-based tips
+    if (age < 18) {
+        tips += `<div class="tip-section">
+            <h3>👶 Young Patient (${age} years)</h3>
+            <ul>
+                <li>Focus on growth and development</li>
+                <li>Ensure proper nutrition and exercise</li>
+                <li>Keep vaccinations up to date</li>
+                <li>Regular dental checkups</li>
+            </ul>
+        </div>`;
+    } else if (age >= 18 && age < 40) {
+        tips += `<div class="tip-section">
+            <h3>💪 Adult (${age} years)</h3>
+            <ul>
+                <li>Maintain regular exercise routine</li>
+                <li>Annual health checkups recommended</li>
+                <li>Monitor stress levels and mental health</li>
+                <li>Maintain healthy work-life balance</li>
+            </ul>
+        </div>`;
+    } else if (age >= 40 && age < 60) {
+        tips += `<div class="tip-section">
+            <h3>🧑 Middle Age (${age} years)</h3>
+            <ul>
+                <li>Regular cardiovascular screening</li>
+                <li>Monitor blood pressure and cholesterol</li>
+                <li>Consider bone density tests</li>
+                <li>Cancer screening as recommended</li>
+            </ul>
+        </div>`;
+    } else {
+        tips += `<div class="tip-section">
+            <h3>👴 Senior (${age} years)</h3>
+            <ul>
+                <li>Comprehensive annual checkups essential</li>
+                <li>Monitor chronic conditions closely</li>
+                <li>Focus on mobility and balance</li>
+                <li>Regular vision and hearing tests</li>
+            </ul>
+        </div>`;
+    }
+    
+    // General tips
+    tips += `<div class="tip-section">
+        <h3>📋 General Recommendations</h3>
+        <ul>
+            <li>Drink 8 glasses of water daily</li>
+            <li>Get 7-8 hours of quality sleep</li>
+            <li>Exercise at least 30 minutes daily</li>
+            <li>Eat a balanced diet rich in fruits and vegetables</li>
+            <li>Practice stress management techniques</li>
+            <li>Avoid smoking and limit alcohol</li>
+        </ul>
+    </div>`;
+    
+    tips += `<div class="warning-note">
+        ⚠️ <strong>Note:</strong> These are general suggestions based on age and gender. Please consult Dr. Indrojit for personalized medical advice tailored to your specific health needs.
+    </div>`;
+    
+    // Show modal
+    document.getElementById('modalBody').innerHTML = tips;
+    document.getElementById('aiModal').style.display = 'block';
+}
+
+function closeModal(event) {
+    if (!event || event.target.id === 'aiModal') {
+        document.getElementById('aiModal').style.display = 'none';
+    }
+}
+
+function sendWhatsApp() {
+    let name = document.getElementById("name").value;
+    let age = document.getElementById("age").value;
+    let sex = document.getElementById("sex").value;
+    let phone = document.getElementById("phone").value;
+    let date = document.getElementById("date").value;
+    let reason = document.getElementById("reason").value;
+    let symptoms = document.getElementById("symptoms").value;
+
+    // Validation
+    if (!name || !age || !sex || !phone || !date || !reason) {
+        alert("⚠️ Please fill all required fields");
+        return;
+    }
+
+    if (!selectedTime) {
+        alert("⚠️ Please select a time slot");
+        return;
+    }
+
+    // Format date nicely
+    const dateObj = new Date(date);
+    const formattedDate = dateObj.toLocaleDateString('en-US', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    });
+
+    // Doctor's WhatsApp number
+    let phoneNumber = "+917602711924";
+
+    let message =
+        `*NEW APPOINTMENT BOOKING*%0A%0A` +
+        `*Patient Details:*%0A` +
+        `Name: ${name}%0A` +
+        `Age: ${age} years%0A` +
+        `Gender: ${sex}%0A` +
+        `Contact: ${phone}%0A%0A` +
+        `*Appointment Details:*%0A` +
+        `Date: ${formattedDate}%0A` +
+        `Time: ${selectedTime}%0A%0A` +
+        `*Reason for Visit:*%0A${reason}%0A%0A`;
+    
+    if (symptoms) {
+        message += `*Additional Notes:*%0A${symptoms}%0A%0A`;
+    }
+    
+    message += `*Booked via Appointment System created by GBT*`;
+
+    let url = `https://wa.me/${phoneNumber}?text=${message}`;
+
+    window.open(url, "_blank");
+    
+    // Show success message
+    setTimeout(() => {
+        alert("Appointment request sent! Dr. Indrojit's clinic will confirm your appointment shortly via WhatsApp.");
+    }, 500);
+}
+
+// Mobile Menu Toggle
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+const navLinks = document.querySelectorAll('.nav-link');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Close mobile menu when a link is clicked
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+</script>
+
+<!-- Footer-->
+<div class="footer">
+    <p>&copy;  2026 <a href="https://www.growbrandtech.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">GrowBrandTech</a> (GBT). All rights reserved. | IT Support: smhr@growbrandtech.com
+ </p>
+    <!-- <p> Made with ❤️ by Snehasish</p>
+    
+    <div style="margin-top: 20px; font-size: 14px; opacity: 0.9;">
+        <p style="margin-bottom: 10px;"><strong>📍 Verified Listings:</strong></p>
+        <p style="margin: 8px 0;">
+            <a href="https://www.justdial.com/Malda/Dr-Indrajit-MajumdarS-Pregnancy-Women-Fertility-Care-Opposite-Of-Cooperative-Bank-Dutta-Para/9999P3512-3512-250508155658-M9M6_BZDET" target="_blank" style="color: white; text-decoration: underline;">View on JustDial →</a>
+        </p>
+        <p style="margin: 8px 0;">
+            <a href="https://gynecologistnearme.in/city/malda/dr-indrajit-majumdar-pregnancy-women-fertility-care-malda-laparoscopic-surgeon/" target="_blank" style="color: white; text-decoration: underline;">View on GynecologistNearMe →</a>
+        </p>
+    </div>
+    
+    <div class="social-links">
+        <a href="#" title="Facebook">📘</a>
+        <a href="#" title="WhatsApp">💬</a>
+        <a href="#" title="Phone">📱</a>
+        <a href="#" title="Email">✉️</a>
+    </div>-->
+</div> 
+
+</body>
+</html>
