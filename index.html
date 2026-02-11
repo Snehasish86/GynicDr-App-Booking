@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Indrojit - Medical Professional Portfolio</title>
+    <link rel="stylesheet" href="index.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            prefix: 'tw-', /* Prefix to avoid conflicts */
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1F2D3D',
+                        secondary: '#2C7BE5',
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        inter: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .nav-logo {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><img src="img/logo.png" alt="Logo"
+                    style="height: 50px; padding: 5px 0;"></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#specializations" class="nav-link">Specializations</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="appointment-booking.html" class="nav-link">Book Now</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Floating Bubbles -->
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <!-- Header -->
+    <div class="header">
+        <!-- Decorative elements -->
+        <div class="header-decorations">
+            <div class="decoration decoration-1"></div>
+            <div class="decoration decoration-2"></div>
+            <div class="decoration decoration-3"></div>
+        </div>
+
+        <div class="header-content" data-aos="fade-up" data-aos-duration="1000">
+            <!-- Hero Visual (Image) - Swapped to Left -->
+            <div class="hero-visual" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200"
+                style="position: relative; z-index: 10;">
+                <!-- Decorative 3D Elements -->
+                <div class="floating-shape shape-1"></div>
+                <div class="floating-shape shape-2"></div>
+                <div class="floating-shape shape-3"></div>
+
+                <div class="profile-img" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare
+                    data-tilt-max-glare="0.3" style="transform-style: preserve-3d; transform: perspective(1000px);">
+                    <img src="img/bgRemoveDrPic.png" alt="Dr. Indrojit" class="hero-photo"
+                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 18px; transform: translateZ(20px);">
+                </div>
+            </div>
+
+            <!-- Hero Text (Content) - Swapped to Right -->
+            <div class="hero-text">
+                <!-- Trust Badges -->
+                <div class="trust-badges">
+                    <div class="badge">
+                        <span class="badge-icon"><i class="fas fa-check-circle"></i></span>
+                        <span>Verified Doctor</span>
+                    </div>
+                    <div class="badge">
+                        <span class="badge-icon"><i class="fas fa-star" style="color: #f1c40f;"></i></span>
+                        <span>4.9 Rating</span>
+                    </div>
+                    <div class="badge">
+                        <span class="badge-icon"><i class="fas fa-user-check"></i></span>
+                        <span>130+ Reviews</span>
+                    </div>
+                </div>
+
+                <h1>Dr. Indrajit Majumdar</h1>
+
+                <p class="subtitle"><span style="color: #7B3F8B; font-weight: 700;">Gynecologist • Obstetrician •
+                        Infertility Specialist</span><br><strong
+                        style="color: #2C7BE5; font-weight: 700; font-size: 1.05em;">5+ Years of Experience in Women's
+                        Health & Fertility Care</strong></p>
+
+                <!-- Professional Credentials -->
+                <div class="certifications">
+                    <span class="certification">
+                        <span class="certification-icon"><i class="fas fa-book-medical"></i></span>
+                        <span>MBBS</span>
+                    </span>
+                    <span class="certification">
+                        <span class="certification-icon"><i class="fas fa-graduation-cap"></i></span>
+                        <span>MS (OB/GYN)</span>
+                    </span>
+                    <span class="certification">
+                        <span class="certification-icon"><i class="fas fa-procedures"></i></span>
+                        <span>Laparoscopic Surgeon</span>
+                    </span>
+                    <span class="certification">
+                        <span class="certification-icon"><i class="fas fa-baby"></i></span>
+                        <span>Fertility Specialist</span>
+                    </span>
+                </div>
+
+                <!-- Call-to-Action Buttons -->
+                <div class="cta-buttons">
+                    <a href="appointment-booking.html" class="btn btn-primary"><i class="fas fa-calendar-check"></i>
+                        Book Appointment</a>
+                    <a href="#contact" class="btn btn-secondary"><i class="fas fa-phone-alt"></i> Contact Me</a>
+                </div>
+
+                <!-- Header Statistics -->
+                <div class="header-stats">
+                    <div class="header-stat">
+                        <span class="value">5+</span>
+                        <span class="label">Years Experience</span>
+                    </div>
+                    <div class="header-stat">
+                        <span class="value">130+</span>
+                        <span class="label">Happy Patients</span>
+                    </div>
+                    <div class="header-stat">
+                        <span class="value">4.9<i class="fas fa-star"
+                                style="font-size: 0.8em; color: #f1c40f;"></i></span>
+                        <span class="label">Patient Rating</span>
+                    </div>
+                    <div class="header-stat">
+                        <span class="value">24/7</span>
+                        <span class="label">Emergency Support</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating 3D Shapes (Preserved) -->
+            <div
+                class="tw-absolute tw-top-20 tw-left-10 tw-w-16 tw-h-16 tw-bg-blue-400/20 tw-rounded-full tw-blur-xl tw-animate-pulse">
+            </div>
+            <div
+                class="tw-absolute tw-bottom-20 tw-right-10 tw-w-24 tw-h-24 tw-bg-indigo-500/20 tw-rounded-full tw-blur-xl tw-animate-pulse tw-delay-700">
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Why Choose Section -->
+        <section class="section" id="why-choose">
+            <h2 class="section-title"><i class="fas fa-lightbulb" style="color: var(--secondary-color);"></i> Why Choose
+                Dr. Indrajit?</h2>
+            <div class="why-choose-grid">
+                <div class="why-choose-card" data-aos="fade-up" data-aos-delay="100" data-tilt>
+                    <div class="why-choose-icon"><i class="fas fa-hospital-user"></i></div>
+                    <h3>Expert Care</h3>
+                    <p>5+ years of specialized experience in gynecology, obstetrics, and infertility management with
+                        proven results.</p>
+                </div>
+                <div class="why-choose-card" data-aos="fade-up" data-aos-delay="200" data-tilt>
+                    <div class="why-choose-icon"><i class="fas fa-users"></i></div>
+                    <h3>Patient-Focused</h3>
+                    <p>Personalized treatment plans tailored to individual needs with compassionate, supportive
+                        guidance.</p>
+                </div>
+                <div class="why-choose-card" data-aos="fade-up" data-aos-delay="300" data-tilt>
+                    <div class="why-choose-icon"><i class="fas fa-microscope"></i></div>
+                    <h3>Advanced Technology</h3>
+                    <p>State-of-the-art laparoscopic surgical techniques and modern diagnostic facilities.</p>
+                </div>
+                <div class="why-choose-card" data-aos="fade-up" data-aos-delay="400" data-tilt>
+                    <div class="why-choose-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h3>Trusted Professional</h3>
+                    <p>4.9<i class="fas fa-star" style="color: #f1c40f;"></i> rating with 130+ patient reviews.
+                        Recognized as a leading specialist in Malda.</p>
+                </div>
+                <div class="why-choose-card" data-aos="fade-up" data-aos-delay="500" data-tilt>
+                    <div class="why-choose-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Holistic Approach</h3>
+                    <p>Comprehensive care covering reproductive health, pregnancy, fertility, and overall women's
+                        wellness.</p>
+                </div>
+                <div class="why-choose-card" data-aos="fade-up" data-aos-delay="600" data-tilt>
+                    <div class="why-choose-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Always Available</h3>
+                    <p>24/7 emergency support and easy appointment scheduling for your convenience.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="tw-relative tw-py-24 tw-overflow-hidden">
+            <!-- Background element for 3D depth -->
+            <div
+                class="tw-absolute tw-top-0 tw-left-0 tw-w-full tw-h-full tw-bg-gradient-to-br tw-from-slate-50 tw-to-blue-50 tw--z-10">
+            </div>
+
+            <div class="tw-container tw-mx-auto tw-px-4">
+                <div class="tw-flex tw-flex-col lg:tw-flex-row tw-items-center tw-gap-16">
+
+                    <!-- Left: 3D Image/Card -->
+                    <div class="tw-w-full lg:tw-w-5/12" data-aos="fade-right">
+                        <div class="tw-relative tw-group" data-tilt data-tilt-max="5" data-tilt-speed="400"
+                            data-tilt-glare data-tilt-max-glare="0.2">
+                            <div
+                                class="tw-absolute tw--inset-4 tw-bg-gradient-to-r tw-from-blue-600 tw-to-indigo-600 tw-rounded-2xl tw-opacity-30 tw-blur-lg group-hover:tw-opacity-50 tw-transition tw-duration-500">
+                            </div>
+                            <div
+                                class="tw-relative tw-bg-white/30 tw-backdrop-blur-md tw-border tw-border-white/20 tw-p-3 tw-rounded-2xl tw-shadow-2xl">
+                                <img src="img/bgRemoveDrPic.png" alt="Dr. Indrajit Majumdar"
+                                    class="tw-w-full tw-rounded-xl tw-shadow-lg tw-object-cover tw-h-auto tw-bg-white/50">
+
+                                <div
+                                    class="tw-absolute tw-bottom-4 tw-left-4 tw-right-4 md:tw-bottom-6 md:tw-left-6 md:tw-right-6 tw-bg-white/95 tw-backdrop-blur-sm tw-p-3 md:tw-p-4 tw-rounded-xl tw-shadow-lg tw-z-20">
+                                    <h3
+                                        class="tw-text-lg md:tw-text-xl tw-font-bold tw-text-slate-800 tw-font-playfair">
+                                        Dr.
+                                        Indrajit Majumdar</h3>
+                                    <p class="tw-text-blue-600 tw-font-medium tw-text-xs md:tw-text-sm">MBBS, MS - OBGYN
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Content -->
+                    <div class="tw-w-full lg:tw-w-7/12" data-aos="fade-left">
+                        <span
+                            class="tw-inline-block tw-py-1 tw-px-3 tw-rounded-full tw-bg-blue-100 tw-text-blue-600 tw-text-sm tw-font-bold tw-mb-4">About
+                            The Doctor</span>
+                        <h2
+                            class="tw-text-4xl lg:tw-text-5xl tw-font-bold tw-text-slate-800 tw-mb-6 tw-font-playfair tw-leading-tight">
+                            Dedicated to <span
+                                class="tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-r tw-from-blue-600 tw-to-indigo-600">Women's
+                                Health</span> & Wellness
+                        </h2>
+
+                        <div class="tw-space-y-4 tw-text-slate-600 tw-text-lg tw-leading-relaxed">
+                            <p>
+                                <strong>Dr. Indrajit Majumdar (MBBS, MS)</strong> is a trusted Gynecologist,
+                                Obstetrician, Infertility Specialist, and Laparoscopic Surgeon with over 5+ years of
+                                clinical experience.
+                            </p>
+                            <p>
+                                He is dedicated to providing comprehensive and compassionate care for women across all
+                                stages of life. His patient-first approach ensures clear communication, ethical
+                                treatment, and personalized care plans tailored to each individual.
+                            </p>
+                            <p>
+                                Known for his calm demeanor and accurate diagnosis, Dr. Majumdar makes patients feel
+                                comfortable and confident throughout their treatment journey. Recognized in Malda for
+                                expertise in high-risk pregnancies and infertility.
+                            </p>
+                        </div>
+
+                        <!-- Stats Grid (Converted to pure Tailwind) -->
+                        <div class="tw-grid tw-grid-cols-2 md:tw-grid-cols-3 tw-gap-4 tw-mt-10">
+                            <div class="tw-p-4 tw-bg-white tw-rounded-xl tw-shadow-sm tw-border tw-border-slate-100 tw-text-center hover:tw-shadow-md tw-transition tw-duration-300"
+                                data-tilt data-tilt-scale="1.05">
+                                <div class="tw-text-3xl tw-font-bold tw-text-blue-600 tw-mb-1"
+                                    style="color: #2563eb !important;">5+</div>
+                                <div class="tw-text-xs tw-font-bold tw-text-slate-600 tw-uppercase tw-tracking-wide"
+                                    style="color: #475569 !important;">
+                                    Years Experience</div>
+                            </div>
+                            <div class="tw-p-4 tw-bg-white tw-rounded-xl tw-shadow-sm tw-border tw-border-slate-100 tw-text-center hover:tw-shadow-md tw-transition tw-duration-300"
+                                data-tilt data-tilt-scale="1.05">
+                                <div class="tw-text-3xl tw-font-bold tw-text-blue-600 tw-mb-1"
+                                    style="color: #2563eb !important;">130+</div>
+                                <div class="tw-text-xs tw-font-bold tw-text-slate-600 tw-uppercase tw-tracking-wide"
+                                    style="color: #475569 !important;">
+                                    Happy Patients</div>
+                            </div>
+                            <div class="tw-p-4 tw-bg-white tw-rounded-xl tw-shadow-sm tw-border tw-border-slate-100 tw-text-center hover:tw-shadow-md tw-transition tw-duration-300"
+                                data-tilt data-tilt-scale="1.05">
+                                <div class="tw-text-3xl tw-font-bold tw-text-yellow-500 tw-mb-1"
+                                    style="color: #eab308 !important;">4.9 <i class="fas fa-star tw-text-sm"
+                                        style="color: #f1c40f;"></i></div>
+                                <div class="tw-text-xs tw-font-bold tw-text-slate-600 tw-uppercase tw-tracking-wide"
+                                    style="color: #475569 !important;">
+                                    Rating</div>
+                            </div>
+                        </div>
+
+                        <div class="tw-mt-8">
+                            <a href="appointment-booking.html"
+                                class="tw-inline-flex tw-items-center tw-justify-center tw-px-8 tw-py-3 tw-text-base tw-font-medium tw-text-white tw-bg-gradient-to-r tw-from-blue-600 tw-to-indigo-600 tw-rounded-full tw-shadow-lg hover:tw-from-blue-700 hover:tw-to-indigo-700 hover:tw-shadow-xl hover:tw-transform hover:tw--translate-y-1 tw-transition-all tw-duration-300">
+                                <span>Book Appointment</span>
+                                <i class="fas fa-arrow-right tw-ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Decorations for the section -->
+            <div
+                class="tw-absolute tw-top-10 tw-right-10 tw-w-20 tw-h-20 tw-bg-blue-200 tw-rounded-full tw-mix-blend-multiply tw-filter tw-blur-xl tw-opacity-70 tw-animate-blob">
+            </div>
+            <div
+                class="tw-absolute tw-bottom-10 tw-left-10 tw-w-20 tw-h-20 tw-bg-indigo-200 tw-rounded-full tw-mix-blend-multiply tw-filter tw-blur-xl tw-opacity-70 tw-animate-blob tw-animation-delay-2000">
+            </div>
+        </section>
+
+
+
+
+
+
+        <!-- Education Section -->
+        <section class="section" id="education">
+            <h2 class="section-title" data-aos="fade-right"><i class="fas fa-graduation-cap"></i> Education &
+                Qualifications</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-left">
+                    <h3>Master of Surgery (MS) - Obstetrics & Gynecology</h3>
+                    <p class="period">Post-Graduate Specialization</p>
+                    <p>Specialized training in obstetrics, gynecology, infertility management, and advanced laparoscopic
+                        surgical techniques. Expertise in high-risk pregnancies and fertility solutions.</p>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <h3>Bachelor of Medicine, Bachelor of Surgery (MBBS)</h3>
+                    <p class="period">Medical Degree</p>
+                    <p>Comprehensive medical training covering internal medicine, surgical procedures, and clinical
+                        practice. Strong foundation in patient care and medical ethics.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Specialization Areas</h3>
+                    <p class="period">Clinical Focus</p>
+                    <p><i class="fas fa-check"></i> Obstetrics & Gynecology | <i class="fas fa-check"></i> Infertility &
+                        Fertility Treatment | <i class="fas fa-check"></i> Laparoscopic Surgery | <i
+                            class="fas fa-check"></i> Reproductive Health | <i class="fas fa-check"></i> Women's
+                        Wellness</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Continuous Professional Development</h3>
+                    <p class="period">Ongoing</p>
+                    <p>Regular participation in medical seminars, workshops, and research programs to stay updated with
+                        latest advances in women's healthcare and fertility treatments.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="section" id="experience">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Chief Consultant Gynecologist & Obstetrician - Prime Health Point, Malda</h3>
+                    <p class="period">Present</p>
+                    <p>Leading comprehensive women's healthcare services at Prime Health Point. Managing obstetric care,
+                        infertility treatments, and laparoscopic gynecological procedures. Building trust with patients
+                        through personalized care and ethical practice.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Clinical Experience in Women's Health</h3>
+                    <p class="period">5+ Years</p>
+                    <p>Extensive experience in managing normal and high-risk pregnancies, infertility evaluation and
+                        treatment protocols, laparoscopic gynecological procedures, and reproductive health
+                        consultations. Known for calm demeanor and patient-centric approach.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Specialization Training</h3>
+                    <p class="period">Completed</p>
+                    <p>Advanced training in Obstetrics & Gynecology, infertility management, and laparoscopic surgical
+                        techniques. Certified in managing complex gynecological conditions and fertility-related issues.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specializations -->
+        <section class="section" id="specializations">
+            <h2 class="section-title"><i class="fas fa-award"></i> Areas of Specialization</h2>
+            <div class="specialization-grid">
+                <div class="spec-card" data-aos="flip-up" data-tilt>
+                    <h3><i class="fas fa-baby-carriage" style="color: var(--secondary-color);"></i> Obstetrics &
+                        Pregnancy Care</h3>
+                    <p>Comprehensive antenatal, perinatal, and postnatal care. Management of normal pregnancies,
+                        high-risk pregnancies, and complicated deliveries with advanced medical support.</p>
+                </div>
+                <div class="spec-card" data-aos="flip-up" data-tilt>
+                    <h3><i class="fas fa-female" style="color: var(--secondary-color);"></i> Gynecology & Women's Health
+                    </h3>
+                    <p>General gynecological care, menstrual disorders, menopausal management, reproductive health, and
+                        preventive gynecology for women at all life stages.</p>
+                </div>
+                <div class="spec-card">
+                    <h3><i class="fas fa-dna" style="color: var(--secondary-color);"></i> Infertility & Fertility
+                        Treatment</h3>
+                    <p>Comprehensive infertility evaluation, fertility counseling, ovulation induction, IUI, and ICSI
+                        procedures. Supportive care for couples seeking pregnancy.</p>
+                </div>
+                <div class="spec-card">
+                    <h3><i class="fas fa-procedures" style="color: var(--secondary-color);"></i> Laparoscopic
+                        Gynecological Surgery</h3>
+                    <p>Minimally invasive surgical techniques for endometriosis, ovarian cysts, uterine fibroids, and
+                        other gynecological conditions. Expertise in advanced laparoscopic procedures.</p>
+                </div>
+                <div class="spec-card">
+                    <h3><i class="fas fa-pills" style="color: var(--secondary-color);"></i> Hormonal & Reproductive
+                        Endocrinology</h3>
+                    <p>Management of PCOS, thyroid disorders, hormonal imbalances, and their impact on fertility and
+                        reproductive health.</p>
+                </div>
+                <div class="spec-card">
+                    <h3><i class="fas fa-hands-helping" style="color: var(--secondary-color);"></i> Patient-Centric
+                        Counseling</h3>
+                    <p>Detailed consultations, clear explanations, and personalized care plans. Emotional support
+                        throughout treatment journey with compassionate approach.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="section" id="services">
+            <h2 class="section-title"><i class="fas fa-stethoscope"></i> Services Offered</h2>
+            <div class="services-grid">
+                <div class="service-card" data-aos="zoom-in-up" data-tilt>
+                    <div class="service-icon"><i class="fas fa-baby"></i></div>
+                    <h3>Pregnancy Care & Delivery</h3>
+                    <p>Complete antenatal care, routine checkups, ultrasound monitoring, high-risk pregnancy management,
+                        and safe delivery planning.</p>
+                </div>
+                <div class="service-card" data-aos="zoom-in-up" data-tilt>
+                    <div class="service-icon"><i class="fas fa-vial"></i></div>
+                    <h3>Infertility Evaluation & Treatment</h3>
+                    <p>Comprehensive fertility assessment, ovulation induction, IUI procedures, ICSI treatment, and
+                        personalized fertility counseling.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-microscope"></i></div>
+                    <h3>Gynecological Diagnostics</h3>
+                    <p>Advanced ultrasound imaging, hormonal assays, endometrial biopsy, and other diagnostic procedures
+                        for accurate gynecological assessment.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-hospital"></i></div>
+                    <h3>Laparoscopic Surgery</h3>
+                    <p>Minimally invasive surgical treatment for endometriosis, fibroids, cysts, and other gynecological
+                        conditions with faster recovery.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-user-md"></i></div>
+                    <h3>Women's Health Counseling</h3>
+                    <p>Pre- and post-natal care, menstrual health management, menopause counseling, and reproductive
+                        health education for women of all ages.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-phone-volume"></i></div>
+                    <h3>Consultation & Follow-ups</h3>
+                    <p>Initial consultations, routine follow-ups, and personalized treatment planning. Open
+                        communication and clear explanation of all procedures.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="section" id="gallery">
+            <h2 class="section-title"><i class="fas fa-camera"></i> Our Clinic & Facilities</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="zoom-in" data-tilt>
+                    <img src="img/OperationTheatorPicture.png" alt="Operation Theater">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text">Surgical Suite</div>
+                    </div>
+                    <div class="gallery-label">Advanced Operation Theater</div>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-tilt>
+                    <img src="img/doctorPecConver.png"
+                        alt="Dr. Indrajit holding a newborn baby in a clinical setting, representing compassionate maternal and newborn care at Prime Health Point clinic">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text">Maternal Care</div>
+                    </div>
+                    <div class="gallery-label">Newborn & Mother Care</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/doctorPecConversetion.png" alt="Doctor Consultation">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text">Consultation</div>
+                    </div>
+                    <div class="gallery-label">Patient Consultation Room</div>
+                </div>
+                <div class="gallery-item transparent-card" data-aos="zoom-in" data-tilt>
+                    <img src="img/doctorPecConver.png" alt="Doctor Patient Discussion">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text">Patient Care</div>
+                    </div>
+                    <div class="gallery-label">Doctor-Patient Discussion</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/ModernMedicalFacility.png" alt="Clinic Facility">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text">Modern Clinic</div>
+                    </div>
+                    <div class="gallery-label">Modern Medical Facility</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/drIndrojitProfilePhoto.jpg" alt="Dr. Indrajit Portrait">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-text">Our Doctor</div>
+                    </div>
+                    <div class="gallery-label">Dr. Indrajit Majumdar</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section" id="contact">
+            <h2 class="section-title"><i class="fas fa-address-book"></i> Contact Information</h2>
+            <div class="contact-info">
+                <div class="contact-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="contact-details">
+                        <h4>Phone & WhatsApp</h4>
+                        <p><a href="tel:7602711924"
+                                style="color: inherit; text-decoration: none;"><strong>7602711924</strong></a></p>
+                    </div>
+                </div>
+                <div class="contact-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contact-details">
+                        <h4>Clinic Address</h4>
+                        <p>Prime Health Point, Gour Road, Krishna Jiban Sanyal Road, Opposite Co-Operative Bank, Dutta
+                            Para, Malda, West Bengal – 732101</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                    <div class="contact-details">
+                        <h4>Clinic Hours</h4>
+                        <p><strong>8:00 AM – 3:00 PM (Everyday)</strong></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-star"></i></div>
+                    <div class="contact-details">
+                        <h4>Patient Reviews</h4>
+                        <p><strong>4.9 <i class="fas fa-star" style="color: #f1c40f;"></i> Rating</strong> | 130+
+                            Patient Reviews</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="appointment-booking.html" class="btn btn-primary" style="display: inline-flex;">
+                    <i class="fas fa-calendar-check"></i> Book Your Appointment Now
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <!--Footer -->
+    <div class="footer">
+        <p>&copy; 2026 <a href="https://www.growbrandtech.com/" target="_blank" rel="noopener noreferrer"
+                style="color: inherit; text-decoration: underline;">GrowBrandTech</a> (GBT). All rights reserved. | IT
+            Support: smhr@growbrandtech.com
+        </p>
+        <!--  <p> Made with ❤️ by Snehasish</p>
+    
+    <div style="margin-top: 20px; font-size: 14px; opacity: 0.9;">
+        <p style="margin-bottom: 10px;"><strong>📍 Verified Listings:</strong></p>
+        <p style="margin: 8px 0;">
+            <a href="https://www.justdial.com/Malda/Dr-Indrajit-MajumdarS-Pregnancy-Women-Fertility-Care-Opposite-Of-Cooperative-Bank-Dutta-Para/9999P3512-3512-250508155658-M9M6_BZDET" target="_blank" style="color: white; text-decoration: underline;">View on JustDial →</a>
+        </p>
+        <p style="margin: 8px 0;">
+            <a href="https://gynecologistnearme.in/city/malda/dr-indrajit-majumdar-pregnancy-women-fertility-care-malda-laparoscopic-surgeon/" target="_blank" style="color: white; text-decoration: underline;">View on GynecologistNearMe →</a>
+        </p>
+    </div>
+    
+    <div class="social-links">
+        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" title="Phone"><i class="fas fa-phone-alt"></i></a>
+        <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+    </div>-->
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="index.js"></script>
+
+</body>
+
+</html>
